@@ -1,0 +1,182 @@
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+:root {
+    --clr-1: #6d298d;
+    --clr-2: whitesmoke;
+    --clr-3: #9323b3;
+    --clr-4: #a673e3;
+    --clr-5: #d962d5;
+    --img-ht: 200px;
+    --img-wt: 400px ;
+}
+body {
+    /* background-color: var(--clr-2); */
+    background-image: url("image/first.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    min-height: 100vh;
+    place-content: center;
+}
+
+.card {
+    height: var(--img-ht);
+    /* aspect-ratio: 1/ 1.5; */
+    width: var(--img-wt);
+    background: var(--clr-1);
+    border-radius: 0.5rem;
+    position: relative;
+    transition: .5s ;
+}
+
+.card::before,
+.card::after {
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+    z-index: -1;
+    background: repeating-conic-gradient(
+        from var(--gradient-angle),
+        var(--clr-2),
+        var(--clr-2),
+        var(--clr-2),
+        var(--clr-2),
+        var(--clr-2)
+    );
+    border-radius: inherit;
+    animation: rotation 5s linear infinite;
+}
+.card::after {
+    filter: blur(3rem);
+}
+
+@keyframes rotation {
+    0% {
+        --gradient-angle: 0deg;
+    }
+    100% {
+        --gradient-angle: 360deg;
+    }
+}
+
+
+
+.card:hover{
+    width: 450px;
+    height: 500px;
+
+}
+
+
+.login{
+    position: absolute;
+    inset: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.2);
+    z-index: 1000;
+    box-shadow: inset 0  10px 20px rgba(0, 0, 0,0.5);
+    border-bottom: 2px rgba(255,255,255,0.5);
+    transition: 0.5s ;
+    color: #fff;
+    overflow: hidden;
+    
+}
+
+.card:hover .login{
+    inset: 40px;
+
+}
+
+.loginBx{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+    transform: translateY(135px);
+    transition: .5s;
+    
+}
+
+.card:hover .loginBx{
+    transform: translateY(0px);
+
+}
+.loginBx h2{
+    text-transform: uppercase;
+    font-weight: 600 ;
+    letter-spacing: .2em;
+
+}
+
+.loginBx h2 i {
+    color: #ff2770;
+    text-shadow: 0 0 5px #ff2770 , 
+    0 0 25px #ff2770 ;
+}
+
+
+.loginBx input,textarea{
+    width: 100%;
+    padding: 10px 20px ;
+    outline: none;
+    border: none;
+    font-size: 1em;
+    color: #fff;
+    background:rgba(0,0,0, 0.1);
+    border: 2px solid #fff;
+    border-radius: 30px;
+
+}
+
+textarea{
+    resize: none;
+}
+
+.loginBx input::placeholder{
+    color: #999;
+    
+}
+
+.loginBx input[type="submit"]{
+    background: #45f3ff;
+    border: none;
+    font-weight: 500;
+    color: #111;
+    cursor:pointer;
+    transition: .5s;
+}
+
+.loginBx input[type="submit"]:hover{
+    box-shadow: 0 0 10px #45f3ff,
+    0 0 60px #45f3ff;
+}
+
+.group{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.group a{
+    color: white;
+    text-decoration: none;
+
+
+}
+
+.group a:nth-child(2){
+    color: #ff2770;
+    font-weight: 600;
+}
